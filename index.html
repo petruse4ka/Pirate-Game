@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Random Game by Konstantin Petrov">
+    <meta name="keywords" content="game, javascript, web game, online game, game development, html5 game, game application, game project, browser game, js game, coding games, game programming, game logic, animation">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat&Ewert&family=Lobster&family=Pirata+One&family=Raleway&family=Poppins&family=Playfair+Display&family=Oswald&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <title>Random Game by Konstantin Petrov</title>
+  </head>
+<body class="body">
+  <header class="header">
+    <img class="flying-parrot" src="assets/images/parrot2.png" alt="Image of a flying pirate parrot with a sharp object in his claws." width="420" height="632">
+    <div class="logo__container">
+      <a class="logo-link" href="#">
+        <img class="logo-image" src="assets/images/logo.png" alt="Logo of the Pirates of the RS School game that depicts a pirate ship sailing through the ocean" width="189" height="192">
+        <span class="logo">Pirates of the RS School</span>
+        <span class="slogan">by Konstantin Petrov</span>
+      </a>
+    </div>
+    <img class="flying-parrot" src="assets/images/parrot2_2.png" alt="Image of a flying pirate parrot with a sharp object in his claws." width="420" height="632">
+  </header>
+  <main class="main">
+    <section class="random-game">
+      <h1 class="page__title">Random Game by Konstantin Petrov</h1>
+      <div class="info-blocks__container">
+        <div class="rules-block__container">
+          <img class="rules-image" src="assets/images/rules-pirate.png" alt="A pirate holding a scroll, ready to reveal the Rules of the Seven Seas." width="210" height="316">
+          <div class="rules__container">
+            <h2 class="block-title">Rules</h2>
+            <p class="block-description">Yarr, these be the sacred scrolls of pirate code! Know 'em well, or ye may be walkin' the plank sooner than ye thought! Beware, for any pirate who dares break these laws will find themselves feedin' the fish in no time!</p>
+            <button class="rules-button" id="rules-open">
+              <img src="assets/svg/parrot.png" class="button-icon" alt="Small icon of a parrot dressed like pirate" width="20" height="20">
+              <span>Read rules</span>
+            </button>
+          </div>
+        </div>  
+        <div class="leaderboard-block__container">
+          <img class="leaderboard-image" src="assets/images/leaderboard-pirate.png" alt="A treasure chest with names of the greatest pirates etched on it." width="210" height="316">
+          <div class="leaderboard__container">
+            <h2 class="block-title">Leaderboard</h2>
+            <p class="block-description">Ahoy! Here's where the finest buccaneers keep their score! Check if yer worthy to be among 'em, or if ye still need to polish yer cannonballs! Beware though, only the fiercest pirates claim the top—no place for lily-livered landlubbers!</p>
+            <button class="leaderboard-button" id="leaderboard-open">
+              <img src="assets/svg/parrot.png" class="button-icon" alt="Small icon of a parrot dressed like pirate" width="20" height="20">
+              <span>Check leaderboard</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="game__container">
+        <div class="left__container">
+          <div class="game-settings__container">
+            <button id="showSettings" class="settings-button">
+              <img src="assets/svg/gear.png" class="button-icon" alt="Small icon of a parrot dressed like pirate" width="20" height="20">
+              <span>Game settings</span>
+            </button>
+            <div id="settings" class="game-settings game-settings_hidden">
+              <div class="settings-group">
+                <span class="settings-label">Ship model:</span>
+                <div class="ship-icon__container">
+                  <label for="pirateShip" class="ship-icon-label">
+                    <input type="radio" id="pirateShip" name="shipIcon" value="pirate-ship" checked>
+                    <img src="assets/svg/pirate-ship2.png" alt="Pirate Ship" class="ship-miniature">
+                  </label>
+                  <label for="jetSki" class="ship-icon-label">
+                    <input type="radio" id="jetSki" name="shipIcon" value="jet-ski">
+                    <img src="assets/svg/jet-ski2.png" alt="Jet Ski" class="ship-miniature">
+                  </label>
+                  <label for="ordinaryShip" class="ship-icon-label">
+                    <input type="radio" id="ordinaryShip" name="shipIcon" value="ordinary-ship">
+                    <img src="assets/svg/ordinary-ship2.png" alt="Ordinary Ship" class="ship-miniature">
+                  </label>
+                  <label for="sailBoat" class="ship-icon-label">
+                    <input type="radio" id="sailBoat" name="shipIcon" value="sail-boat">
+                    <img src="assets/svg/sail-boat2.png" alt="Sail Boat" class="ship-miniature">
+                  </label>
+                  <label for="vikingShip" class="ship-icon-label">
+                    <input type="radio" id="vikingShip" name="shipIcon" value="viking-ship">
+                    <img src="assets/svg/viking-ship2.png" alt="Viking Ship" class="ship-miniature">
+                  </label>
+                </div>
+              </div>
+              <div class="settings-group">
+                <label for="shipSpeed" class="settings-label">Ship speed:</label>
+                <select id="shipSpeed" class="ship-speed-select">
+                  <option value="1" selected>Cruise</option>
+                  <option value="2">Turbo</option>
+                  <option value="3">Yohohohoho</option>
+                </select>
+              </div>
+              <div class="settings-group">
+                <label for="cannonballColor" class="settings-label">Cannonball color:</label>
+                <select id="cannonballColor" class="cannonball-color-select">
+                  <option value="gold" selected>Gold</option>
+                  <option value="silver">Silver</option>
+                  <option value="black">Black</option>
+                  <option value="red">Red</option>
+                  <option value="blue">Blue</option>
+                  <option value="green">Green</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="game-details__container">
+            <div class="game-detail" id="timer">
+              <img src="assets/svg/timer.png" alt="Timer Icon" class="stat-icon" width="40" height="40">
+              <p class="stat-text">Time alive: <span id="timeValue">0s</span></p>
+            </div>
+            <div class="game-detail" id="cannonballs">
+              <img src="assets/svg/cannonball.png" alt="Cannonball Icon" class="stat-icon" width="40" height="40">
+              <p class="stat-text">Cannonballs shot: <span id="cannonballsValue">0</span></p>
+            </div>
+            <div class="game-detail" id="distance">
+              <img src="assets/svg/distance.png" alt="Distance Icon" class="stat-icon" width="40" height="40">
+              <p class="stat-text">Distance traveled: <span id="distanceValue">0m</span></p>
+            </div>
+          </div>
+          <div class="canvas__container">
+            <canvas id="canvas" class="canvas"></canvas>
+          </div>
+          <div class="game-intro__container">
+            <button id="gameStart" class="start-button">Start new game</button>
+          </div>
+        </div>
+        <div class="right__container">
+          <div class="top-result" id="topResult">
+            <h2 class="top-result-title">Top result</h2>
+            <div class="top-result__container">
+              <img src="assets/images/best-pirate.png" alt="Pirate with two golden cups" class="top-result-icon" width="175" height="175">
+              <div class="top-result-details">
+                <p class="top-result-time">Time: <span id="topResultTime">0</span>s</p>
+                <p class="top-result-cannonballs">Cannonballs: <span id="topResultCannonballs">0</span></p>
+                <p class="top-result-distance">Distance: <span id="topResultDistance">0</span>m</p>
+              </div>
+            </div>
+          </div>
+          <div class="last-results">
+            <h2 class="last-results-title">Last results</h2>
+            <div class="no-results__container" id="noResults">
+              <img src="assets/images/pirate-bust.png" alt="Bust of a pirate with a golden medal, symbolizing victories and adventures at sea." class="no-results__icon" width="150" height="250">
+              <p class="no-results__message">Ye be no scallywag! Set yer sails, give it a whirl, and watch yer mighty feats appear 'ere!</p>
+            </div>
+            <ul class="results-list"></ul>
+          </div>
+          <div class="game-controls">
+            <h2 class="controls-title">Game controls</h2>
+            <img src="assets/svg//arrowkeys.png" alt="Arrow keys" class="arrow-keys-image" width="100" height="75">
+            <p class="game-instructions">Use the arrow keys to move the ship</p>
+          </div>
+        </div>
+        <div class="no-game__container" id="noGameContainer">
+          <h2 class="no-game__title">Game Unavailable</h2>
+          <img src="assets/images/pirate-bust.png" alt="Bust of a pirate with a golden medal, symbolizing victories and adventures at sea." class="no-game__icon" width="150" height="250">
+          <p class="no-game__message">Ahoy, matey! The game be unavailable on devices smaller than 768px. The seas be too rough on small screens! Try again on a larger device to sail smoothly.</p>
+        </div>
+      </div>
+      <div class="pirate-quote__container">
+        <img class="pirate-quote__image" src="assets/images/pirate.png" alt="A quirky pirate character featuring a parrot for a head, embodying the fun of pirate life." width="210" height="316">
+        <div class="blockquote__container">
+          <button class="quote-button">
+            <img src="assets/svg/parrot.png" class="quote-button__icon" alt="Small icon of a parrot dressed like pirate" width="20" height="20">
+            <span>What's on a Pirate's Mind?</span>
+          </button>
+          <blockquote class="pirate-quote"></blockquote>
+        </div>
+      </div>
+    </section>
+    <dialog class="popup" id="rules">
+      <div class="popup__container">
+        <img class="rules__character" src="assets/images/child-pirate.png" alt="A pirate captain, with a knife, eagerly explaining the rules of the game" width="210" height="316">
+        <div class="rules__container">
+          <ul class="rules-list">
+            <li class="rules-item">
+              <p class="rules-heading">Steer Yer Ship, Matey!</p>
+              <p class="rules-text">Use the arrow keys to navigate yer vessel through treacherous waters. A true pirate captain must be quick on the helm!</p>
+            </li>
+            <li class="rules-item">
+              <p class="rules-heading">Beware the Flying Cannonballs!</p>
+              <p class="rules-text">Them cannons ain’t for decoration! Dodge the cannonballs or ye’ll be sleeping with the fishies!</p>
+            </li>
+            <li class="rules-item">
+              <p class="rules-heading">Don’t Let Yer Ship Get Sunk!</p>
+              <p class="rules-text">One hit and yer vessel be going down faster than a barrel of rum at a pirate feast! Stay sharp or it’s Davy Jones’ Locker for ye!</p>
+            </li>
+            <li class="rules-item">
+              <p class="rules-heading">Survival o’ the Fittest!</p>
+              <p class="rules-text">Only the craftiest pirate makes it out alive. Keep yer wits about ye or the sea will claim yer bones!</p>
+            </li>
+            <li class="rules-item">
+              <p class="rules-heading">A Pirate Never Surrenders!</p>
+              <p class="rules-text">Even if the cannonballs be flyin’ faster than a seagull in a storm, don’t give up! Fight like a pirate, or ye’ll walk the plank!</p>
+            </li>
+            <li class="rules-item">
+              <p class="rules-heading">No Landlubbers Allowed!</p>
+              <p class="rules-text">Ye must stay clear o’ the island! The red line marks its borders, and any ship foolish enough to cross it will meet an untimely end. No exceptions!</p>
+            </li>
+            <li class="rules-item">
+              <p class="rules-heading">Yo Ho Ho, And Off We Go!</p>
+              <p class="rules-text">Set sail, avoid the cannonballs, and prove ye have what it takes to be the captain of the high seas. Arrr, may the winds be in yer favor!</p>
+            </li>
+          </ul>
+          <button class="close-popup" id="close-rules">x</button>
+        </div>
+      </div>
+    </dialog>
+    <dialog class="popup" id="leaderboard">
+      <div class="popup__container">
+        <img class="leaderboard__character" src="assets/images/winner-pirate.png" alt="A pirate captain, with a knife, eagerly explaining the rules of the game" width="210" height="316">
+        <div class="leaderboard__container">
+          <div class="leaderboard-description">
+            <p>Arrr, welcome to the Hall o’ Legends, where only the mightiest scallywags rise to the top! These pirates have dodged cannonballs, outsailed sea monsters, and maybe even talked their way out of walkin’ the plank. Can ye beat their scores and claim yer rightful place as the fiercest pirate on the seven seas? Prove yer worth, or be doomed to swab the deck!</p>
+          </div>
+          <div class="table-title">Leaderboard</div>
+          <table class="leaderboard-table">
+            <thead class="leaderboard-table__header">
+              <tr class="table--head-row">
+                <th class="header-cell">#</th>
+                <th class="header-cell">Avatar</th>
+                <th class="header-cell">Name</th>
+                <th class="header-cell">Time</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">1</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-1.jpg" alt="Head of a pirate with a skeleton-alike face" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Captain Ironhook</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">15:34</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">2</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-3.jpg" alt="Head of a female pirate" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Red Widow Rackham</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">15:11</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">3</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-5.jpg" alt="Head of a pirate with a parrot face" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Mad Jack Flint</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">14:44</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">4</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-4.jpg" alt="Head of a female pirate" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Anne "The Blade" O'Malley</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">14:21</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">5</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-2.jpg" alt="Head of a male pirate" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Mad Jack Flint</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">13:56</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">6</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-6.jpg" alt="Head of a pirate with a monkey face" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">One-Eyed Morgan</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">13:29</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">7</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-8.jpg" alt="Head of a pirate with a skeleton face" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Rogue Blackwater</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">13:06</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">8</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-7.jpg" alt="Head of a pirate with a shark face" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Captain Steelbeard</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">12:46</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">9</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-9.jpg" alt="Head of a female pirate" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Scarlet Vane</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">12:41</p>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">
+                  <p class="leaderboard-text">10</p>
+                </td>
+                <td class="table-cell">
+                  <div class="leaderboard-avatar__container">
+                    <img class="leaderboard-avatar" src="assets/images/pirate-avatar-10.jpg" alt="Head of a male pirate" width="75" height="75">
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">Ironhook Bill</p>
+                </td>
+                <td class="table-cell">
+                  <p class="leaderboard-text">12:33</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="close-popup" id="leaderboard-close">x</button>
+        </div>
+      </div>
+    </dialog>
+  </main>
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="copyright">
+        <span>Copyright © 2024 <a href="https://github.com/petruse4ka" target="_blank" class="copyright-link">petruse4ka</a></span>
+      </div>
+      <img class="footer-logo" src="assets/images/parrot-footer.png" alt="A pirate parrot with wings fully spread, wearing a small pirate hat, looking bold and adventurous, ready to take flight." width="75" height="50">
+      <div class="logo">
+        <a class="logo_link" href="https://rs.school/courses/javascript-preschool-ru" target="_blank"><img src="assets/svg/rs-school-logo.svg" alt="Rolling-scopes school logo" width="50" height="50"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
